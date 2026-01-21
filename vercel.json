@@ -1,0 +1,5 @@
+{
+  "buildCommand": "bunx prisma generate",
+  "bunVersion": "1.x",
+  "rewrites": [{ "source": "/(.*)", "destination": "/src" }]
+}
