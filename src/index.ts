@@ -11,6 +11,7 @@ const app = new Elysia()
         "http://localhost:5173", // Vite / React / Vue Localhost
         "http://localhost:3000", // ตัว Backend เอง (สำหรับการทดสอบ)
         "https://test-frontend-pied-nu.vercel.app", // Domain จริงตอน Deploy
+        "https://test-backend-swart-xi.vercel.app", // Backend domain (สำหรับการเรียกโดยตรง)
       ],
       // 🔑 อนุญาตให้รับ-ส่ง Cookie/Session
       credentials: true,
