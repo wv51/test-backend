@@ -144,6 +144,11 @@ export const authRoutes = new Elysia({
   // 1. Derive: แปลง Token เป็น userId (เหมือนเดิม)
   .derive(async ({ cookie, bearer, jwt }) => {
     const token = bearer || cookie.session?.value;
+    
+    // Debug log
+    console.log('Auth Debug - Token from bearer:', bearer ? 'YES' : 'NO');
+    console.log('Auth Debug - Token from cookie:', cookie.session?.value ? 'YES' : 'NO');
+    console.log('Auth Debug - Final token:', token ? 'EXISTS' : 'MISSING');
 
     if (!token || typeof token !== "string") {
       return { userId: null };
@@ -151,9 +156,11 @@ export const authRoutes = new Elysia({
 
     const payload = await jwt.verify(token);
     if (!payload) {
+      console.log('Auth Debug - JWT verification failed');
       return { userId: null };
     }
 
+    console.log('Auth Debug - User ID:', payload.sub);
     return { userId: payload.sub as string };
   })
 
